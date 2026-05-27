@@ -1,0 +1,30 @@
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=off \
+    PIP_DISABLE_PIP_VERSION_CHECK=on \
+    PIP_DEFAULT_TIMEOUT=100
+
+WORKDIR /app
+
+# Install system dependencies (build-essential needed for argon2 compiling if no pre-built wheels)
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+    build-essential \
+    libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy pyproject.toml
+COPY pyproject.toml /app/
+
+# Install python dependencies. We use pip install with optional dev dependencies for testing.
+RUN pip install --no-cache-dir .
+
+# Copy backend files
+COPY . /app
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
