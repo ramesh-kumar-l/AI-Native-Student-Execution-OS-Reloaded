@@ -3,7 +3,7 @@
 import { Send, Bot, User } from "lucide-react";
 import { useState } from "react";
 
-export function AgentChatInterface({ activeAgent }: { activeAgent: str }) {
+export function AgentChatInterface({ activeAgent }: { activeAgent: string }) {
   const [input, setInput] = useState("");
 
   return (

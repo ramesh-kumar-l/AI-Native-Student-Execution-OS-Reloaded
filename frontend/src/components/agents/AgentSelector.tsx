@@ -2,7 +2,7 @@
 
 import { Bot, Calendar, Brain, Flame } from "lucide-react";
 
-export function AgentSelector({ activeAgent, setActiveAgent }: { activeAgent: str, setActiveAgent: (agent: str) => void }) {
+export function AgentSelector({ activeAgent, setActiveAgent }: { activeAgent: string, setActiveAgent: (agent: string) => void }) {
   const agents = [
     { id: "planner", name: "The Planner", icon: Calendar, color: "text-indigo-400", bg: "bg-indigo-500/10", border: "border-indigo-500/20", activeBg: "bg-indigo-500/20 border-indigo-500/40" },
     { id: "revision", name: "Revision Master", icon: Brain, color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", activeBg: "bg-emerald-500/20 border-emerald-500/40" },
