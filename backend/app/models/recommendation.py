@@ -8,7 +8,7 @@ class Recommendation(Base):
     __tablename__ = "recommendations"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     
     message: Mapped[str] = mapped_column(String(2000), nullable=False)
     action_type: Mapped[str] = mapped_column(String(100), nullable=False) # e.g. "shift_task", "take_break"

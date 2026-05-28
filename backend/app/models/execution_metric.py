@@ -8,7 +8,7 @@ class ExecutionMetric(Base):
     __tablename__ = "execution_metrics"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     
     # Tracked per day
     record_date: Mapped[date] = mapped_column(Date, nullable=False)

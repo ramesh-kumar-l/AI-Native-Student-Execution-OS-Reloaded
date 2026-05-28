@@ -8,8 +8,8 @@ class Flashcard(Base):
     __tablename__ = "flashcards"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), nullable=False)
-    document_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("documents.id", on_delete="SET NULL"), nullable=True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    document_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("documents.id", ondelete="SET NULL"), nullable=True)
     
     front: Mapped[str] = mapped_column(String(1000), nullable=False)
     back: Mapped[str] = mapped_column(String(2000), nullable=False)

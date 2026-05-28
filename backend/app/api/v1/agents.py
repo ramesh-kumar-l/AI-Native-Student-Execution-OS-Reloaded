@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from app.api.dependencies import get_db, get_current_user
+from app.dependencies import get_db, get_current_user
 from app.models.user import User
 from app.models.agent_message import AgentMessage
 from app.api.schemas.agents import AgentMessageCreate, AgentMessageResponse

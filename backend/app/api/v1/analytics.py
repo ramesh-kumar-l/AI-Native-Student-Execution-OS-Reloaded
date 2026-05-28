@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from datetime import date
-from app.api.dependencies import get_db, get_current_user
+from app.dependencies import get_db, get_current_user
 from app.models.user import User
 from app.api.schemas.analytics import ExecutionMetricResponse, ReflectionResponse
 from app.services.analytics_service import AnalyticsService

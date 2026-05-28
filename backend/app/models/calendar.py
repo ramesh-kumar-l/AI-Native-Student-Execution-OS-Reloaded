@@ -8,7 +8,7 @@ class CalendarSource(Base):
     __tablename__ = "calendar_sources"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     name: Mapped[str] = mapped_column(String(255), nullable=False) # e.g., "University Timetable", "Personal"
     url: Mapped[str] = mapped_column(String(1024), nullable=False) # iCal URL
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
@@ -26,8 +26,8 @@ class CalendarEvent(Base):
     __tablename__ = "calendar_events"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("calendar_sources.id", on_delete="CASCADE"), nullable=False)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), nullable=False)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("calendar_sources.id", ondelete="CASCADE"), nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     
     external_id: Mapped[str] = mapped_column(String(255), index=True) # UID from iCal
     title: Mapped[str] = mapped_column(String(255), nullable=False)

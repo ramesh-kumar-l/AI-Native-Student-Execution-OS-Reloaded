@@ -5,7 +5,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from app.api.dependencies import get_db, get_current_user
+from app.dependencies import get_db, get_current_user
 from app.models.user import User
 from app.models.document import Document
 from app.api.schemas.knowledge import DocumentResponse

@@ -1,5 +1,5 @@
 # Build stage
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 WORKDIR /app
 RUN pip install uv
@@ -19,7 +19,9 @@ COPY --from=builder /usr/local/bin/ /usr/local/bin/
 COPY . .
 
 # Run as non-root user
-RUN useradd -m appuser
+RUN useradd -m appuser \
+    && mkdir -p /app/uploads \
+    && chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8000

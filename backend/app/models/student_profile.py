@@ -9,7 +9,7 @@ class StudentProfile(Base):
     __tablename__ = "student_profiles"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", on_delete="CASCADE"), unique=True, nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False)
     bio: Mapped[str | None] = mapped_column(String(1000), nullable=True)
     university: Mapped[str | None] = mapped_column(String(255), nullable=True)
     major: Mapped[str | None] = mapped_column(String(255), nullable=True)
