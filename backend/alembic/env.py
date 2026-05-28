@@ -24,6 +24,9 @@ from app.models.study_block import StudyBlock
 from app.models.recommendation import Recommendation
 from app.models.document import Document
 from app.models.flashcard import Flashcard
+from app.models.agent_message import AgentMessage
+from app.models.resume import Resume
+from app.models.opportunity import Opportunity
 from app.core.config import get_settings
 
 target_metadata = Base.metadata

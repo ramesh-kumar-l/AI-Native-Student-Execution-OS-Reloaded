@@ -1,16 +1,16 @@
 # Active Context
 
 ## Current Objectives
-- Complete **Phase 5 — Execution Agents**.
-- Introduce autonomous background personas (Planner, Revision, Accountability, Focus).
+- Complete **Phase 7 — Analytics & Reflection**.
+- Implement execution quality scoring and retention dashboards.
 
 ## Active Tasks
-- [ ] Set up Agent orchestrator architecture.
-- [ ] Connect agents to Phase 3 & Phase 4 data contexts.
-- [ ] Build Agent interaction UI panel.
+- [ ] Design analytics database schemas (scores, reflections).
+- [ ] Build calculation cron jobs for execution metrics.
+- [ ] Create Analytics Dashboard UI.
 
 ## Current Blockers
 - None.
 
 ## Next Steps
-- Define Agent personality configurations.
+- Determine calculation algorithms for execution quality scores.
