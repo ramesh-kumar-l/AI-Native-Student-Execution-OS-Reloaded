@@ -7,6 +7,7 @@ from app.core.database import engine
 from app.core.redis import redis_pool
 from app.core.logging import setup_logging
 from app.core.middleware import setup_cors, CorrelationIdMiddleware
+from app.core.rate_limit import init_rate_limiter, close_rate_limiter
 from app.api.v1.health import router as health_router
 from app.api.v1.auth import router as auth_router
 from app.api.v1.profiles import router as profiles_router
@@ -33,9 +34,12 @@ async def lifespan(app: FastAPI):
     )
     logger.info("application_starting", environment=settings.ENVIRONMENT, version="0.1.0")
     
+    await init_rate_limiter()
+    
     yield
     
     logger.info("application_shutting_down")
+    await close_rate_limiter()
     # Clean up connections
     await redis_pool.disconnect()
     await engine.dispose()
