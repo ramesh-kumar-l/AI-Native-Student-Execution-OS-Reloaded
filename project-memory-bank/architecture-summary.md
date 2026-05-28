@@ -1,34 +1,24 @@
 # Architecture Summary
 
-## System Context
-The AI-Native Student Execution OS is built as a split-architecture application:
-1. **Experience Layer (Frontend)**: Next.js 15 App Router. Serves the user interface, manages sessions via Auth.js, handles routing, and forwards requests to the API Layer.
-2. **API Layer (Backend)**: FastAPI (Python). Manages business logic, coordinates AI execution agents, triggers background tasks, and performs database queries.
-3. **Storage Layer**: PostgreSQL 16 for relational data (users, tasks, calendars) and Vector DB (ChromaDB) for document chunks and vector space queries.
-4. **Cache & Task Queue**: Redis 7 for cache management and async background task scheduling (using ARQ).
+The AI-Native Student Execution OS is built on a highly modular, decoupled microservice architecture optimized for speed, AI integration, and production scalability.
 
-```
-[ User Browser ]
-       │ (HTTPS / WebSockets)
-       ▼
-┌─────────────────────────┐
-│       Next.js 15        │  (Experience Layer)
-│    Frontend Server      │
-└──────────┬──────────────┘
-           │ (Internal API Calls / JWT Bearer)
-           ▼
-┌─────────────────────────┐
-│     FastAPI Backend     │  (API Layer & Agents)
-└────┬───────────────┬────┘
-     │               │
-     ▼ (SQL / Async) ▼ (Redis Protocol)
-┌──────────┐   ┌───────────┐
-│ Postgres │   │  Redis 7  │  (Data & Task State)
-│    16    │   │  & ARQ    │
-└──────────┘   └───────────┘
-```
+## Tech Stack
+- **Frontend**: Next.js 15 (App Router), React, Tailwind CSS, Lucide Icons.
+- **Backend API**: FastAPI (Python 3.12).
+- **Database**: PostgreSQL 16 (relational + JSONB structures).
+- **Vector Database**: ChromaDB (Semantic search/RAG).
+- **Caching & Rate Limiting**: Redis 7.
+- **AI/LLM**: Google Gemini 1.5 Flash via `google-genai` SDK.
+- **Infrastructure**: Docker & Docker Compose (Multi-stage builds).
 
-## Core Design Principles
-- **Loose Coupling**: Bounded contexts (Auth, Students, Learning, AI) do not import each other's database schemas directly. They communicate via interfaces.
-- **Async First**: All database queries, Redis connections, and HTTP clients (HTTPX) in the backend are fully asynchronous to prevent blocking.
-- **Fail-Safe Security**: Backend verify-on-request JWT design. The database never exposes unhashed secrets.
+## Core Systems
+1. **Context Engine**: Ingests calendar and goal data via `calendar_service` and `goal_service`.
+2. **Planning Engine**: Evaluates task fatigue and schedules `StudyBlock`s via `study_planner_service`.
+3. **Knowledge Engine**: Parses PDFs (`document_parsing_service`), embeds vectors in ChromaDB (`vector_db_service`), and extracts Flashcards/Summaries via Gemini (`knowledge_extraction_service`).
+4. **Agent Orchestrator**: Routes user chats to persistent LLM personas (`planner`, `revision`, `accountability`) managing context safely.
+5. **Career System**: Parses resumes and generates targeted mock interviews (`interview_simulator_service`).
+6. **Analytics Engine**: Aggregates a daily execution score and generates weekly AI reflections.
+
+## Modularity Strategy
+- **File Size Constraints**: All Python services are strictly kept under 300 lines of code. This ensures maximum LLM token efficiency when maintaining or extending the codebase.
+- **Separation of Concerns**: FastAPI Routers (`/api/v1`) handle only HTTP/Validation. Complex logic is delegated entirely to the `/services/` layer.

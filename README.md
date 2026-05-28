@@ -1,67 +1,61 @@
-# AI-Native Student Execution OS
+<div align="center">
+  <h1>🧠 AI-Native Student Execution OS</h1>
+  <p><i>An autonomous, AI-driven operating system designed to manage academic execution, active recall, and career mobility—powered by Google Gemini 1.5 Flash.</i></p>
 
-An autonomous, persistent AI operating system that transforms student intent into measurable achievement through specialized execution agents.
-
-## Architectural Overview
-
-The system uses a decoupled experience-and-resource design:
-- **Frontend**: Next.js 15 (App Router, Tailwind CSS v4, Auth.js v5). Handles UI representation and edge authentication.
-- **Backend**: FastAPI (Python 3.12, asyncpg, SQLAlchemy 2.0, structlog). Serves REST API resources, manages database entities, and coordinates LLM agents.
-- **Database**: PostgreSQL 16 relational data store.
-- **Cache & Tasks**: Redis 7 active cache and asynchronous tasks scheduler.
-
----
-
-## Local Development Setup
-
-To run the full stack locally with hot-reload support, use Docker Compose:
-
-### Prerequisites
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- Node.js v20+ (for local frontend scripting)
-- Python 3.12+ (for local backend development)
-
-### Booting the Stack
-1. Clone the repository.
-2. Initialize environment files:
-   - Copy `backend/.env.example` to `backend/.env`
-   - Copy `frontend/.env.example` to `frontend/.env.local`
-3. Spin up the container services:
-   ```bash
-   docker compose -f infrastructure/docker/docker-compose.yml up --build
-   ```
-4. Access the applications:
-   - **Frontend UI**: [http://localhost:3000](http://localhost:3000)
-   - **Backend API Docs (Swagger)**: [http://localhost:8000/api/docs](http://localhost:8000/api/docs)
-   - **Backend Health Check**: [http://localhost:8000/api/health/ready](http://localhost:8000/api/health/ready)
+  <p>
+    <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+    <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" /></a>
+    <a href="https://redis.io/"><img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" /></a>
+    <a href="https://ai.google.dev/"><img src="https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white" alt="Gemini" /></a>
+  </p>
+</div>
 
 ---
 
-## Project Structure
+## 📖 Overview
 
-```text
-AI-Native-Student-Execution-OS-Reloaded/
-├── project-memory-bank/       # AI persistent coordination layer (20 files)
-├── frontend/                  # Next.js 15 app
-│   ├── src/
-│   │   ├── app/               # App Router pages and layouts
-│   │   ├── components/        # Shared components
-│   │   ├── lib/               # Utility API client, NextAuth setup
-│   │   └── types/             # Custom typescript definitions
-├── backend/                   # FastAPI app
-│   ├── app/
-│   │   ├── api/               # Router endpoints and Pydantic schemas
-│   │   ├── core/              # Database, middleware, security, and logging config
-│   │   ├── models/            # SQLAlchemy database models
-│   │   └── services/          # Core auth and operational services
-│   ├── alembic/               # Database migrations folder
-└── infrastructure/            # Docker configs and scripts
-    └── docker/
-        └── docker-compose.yml
-```
+The **AI-Native Student Execution OS** is not a simple "to-do list wrapper." It is an end-to-end, multi-agent operating system designed to ingest a student's entire digital life and autonomously optimize their execution.
 
----
+Built on a highly modular Python/FastAPI backend and a glassmorphic Next.js frontend, the system handles algorithmic task fatigue planning, RAG-based knowledge extraction, mock interview generation, and continuous analytical reflections.
 
-## Email Verification Fallback
+## ✨ Key Features
 
-For local development, email sending is printed directly to the backend server logs. Simply open the logs, locate the generated verification link, and paste it into your browser to verify accounts created with Email/Password. To enable actual email deliveries, configure `APP_RESEND_API_KEY` in `backend/.env`.
+- 📅 **Autonomous AI Planning Engine**: Integrates with `.ics` calendar feeds. Gemini evaluates your task backlog, calculates mental fatigue, and autonomously schedules `StudyBlock`s into the blank spaces of your calendar.
+- 🧠 **Knowledge Compression (RAG)**: Drag and drop PDF lectures. The system utilizes `ChromaDB` and `pypdf` to parse and vectorize the documents, allowing Gemini to instantly generate SuperMemo-spaced Flashcards and semantic mental models.
+- 🤖 **Execution Agents**: Interact with distinct AI Personas ("The Planner", "Revision Master", "The Coach"). These agents route context securely and hold you accountable to your daily targets.
+- 💼 **Career Mobility Simulator**: Track opportunities in a Kanban board. The OS parses your resume into a JSON schema and generates hyper-targeted technical and behavioral mock interview questions.
+- 📊 **Execution Analytics**: Calculates a daily Execution Quality Score (0-100) based on task completion, deep work hours, and flashcard retention. The AI provides a harsh, analytical weekly review to ensure continuous improvement.
+
+## 🏗️ Architecture
+
+This project is built for production scalability. 
+
+- **Frontend**: Next.js 15 (React 19), Tailwind CSS, Auth.js.
+- **Backend**: FastAPI, SQLAlchemy 2.0 (asyncpg), Pydantic.
+- **AI/Vector**: `google-genai` (Gemini 1.5 Flash), ChromaDB local persistence.
+- **Infrastructure**: Redis (FastAPI rate-limiting), PostgreSQL (relational + JSONB), Docker Compose.
+- **Strict Modularity**: All AI logic is confined to the `/services/` layer in files strictly under 300 lines to preserve LLM token context sizes.
+
+## 🚀 Getting Started
+
+Getting the OS running locally takes less than 5 minutes. 
+
+Please refer to the [QuickStarterGuide.md](./QuickStarterGuide.md) for step-by-step instructions on setting up environment variables, booting Docker Compose, and running Alembic migrations.
+
+## 📚 Blog Series & Deep Dives
+
+To understand the engineering challenges, architectural trade-offs, and AI integrations utilized in this project, check out our Medium blog series:
+
+1. [Architecting an AI-Native OS: Why Modularity Matters](./blogs/01-architecting-ai-os.md)
+2. [Building an Autonomous AI Planning Engine with Gemini](./blogs/02-ai-planning-engine.md)
+3. [RAG for Students: Compressing Lectures into Flashcards](./blogs/03-knowledge-compression-rag.md)
+4. [Simulating Interviews: LLMs in Career Mobility](./blogs/04-career-mobility-llm.md)
+
+## 🤝 Contributing
+
+This project relies on strict modularity. If you intend to contribute, please review the `project-memory-bank/` directory—specifically `architecture-summary.md`—to understand the strict sub-300-line service layer constraints.
+
+## 📄 License
+
+This project is licensed under the MIT License.
