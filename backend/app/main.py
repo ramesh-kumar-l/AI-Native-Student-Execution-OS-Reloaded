@@ -9,6 +9,9 @@ from app.core.logging import setup_logging
 from app.core.middleware import setup_cors, CorrelationIdMiddleware
 from app.api.v1.health import router as health_router
 from app.api.v1.auth import router as auth_router
+from app.api.v1.profiles import router as profiles_router
+from app.api.v1.goals import router as goals_router
+from app.api.v1.calendar import router as calendar_router
 
 settings = get_settings()
 logger = structlog.get_logger()
@@ -44,3 +47,6 @@ app.add_middleware(CorrelationIdMiddleware)
 # Expose HTTP endpoint routers
 app.include_router(health_router, prefix="/api")
 app.include_router(auth_router, prefix="/api/v1")
+app.include_router(profiles_router, prefix="/api/v1")
+app.include_router(goals_router, prefix="/api/v1")
+app.include_router(calendar_router, prefix="/api/v1")

@@ -16,6 +16,9 @@ if config.config_file_name is not None:
 # Import models metadata for autogenerate support
 from app.core.database import Base
 from app.models.user import User, VerificationToken, RefreshToken
+from app.models.student_profile import StudentProfile
+from app.models.goal import Goal, Milestone
+from app.models.calendar import CalendarSource, CalendarEvent
 from app.core.config import get_settings
 
 target_metadata = Base.metadata
