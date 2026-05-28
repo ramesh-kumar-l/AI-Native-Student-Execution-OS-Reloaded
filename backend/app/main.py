@@ -19,6 +19,7 @@ from app.api.v1.documents import router as documents_router
 from app.api.v1.knowledge import router as knowledge_router
 from app.api.v1.agents import router as agents_router
 from app.api.v1.career import router as career_router
+from app.api.v1.analytics import router as analytics_router
 
 settings = get_settings()
 logger = structlog.get_logger()
@@ -64,3 +65,4 @@ app.include_router(documents_router, prefix="/api/v1")
 app.include_router(knowledge_router, prefix="/api/v1")
 app.include_router(agents_router, prefix="/api/v1")
 app.include_router(career_router, prefix="/api/v1")
+app.include_router(analytics_router, prefix="/api/v1")

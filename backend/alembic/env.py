@@ -27,6 +27,8 @@ from app.models.flashcard import Flashcard
 from app.models.agent_message import AgentMessage
 from app.models.resume import Resume
 from app.models.opportunity import Opportunity
+from app.models.execution_metric import ExecutionMetric
+from app.models.reflection import Reflection
 from app.core.config import get_settings
 
 target_metadata = Base.metadata

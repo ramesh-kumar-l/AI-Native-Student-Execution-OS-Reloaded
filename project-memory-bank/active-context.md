@@ -1,16 +1,16 @@
 # Active Context
 
 ## Current Objectives
-- Complete **Phase 7 — Analytics & Reflection**.
-- Implement execution quality scoring and retention dashboards.
+- Complete **Phase 8 — Scale & Hardening (Final Phase)**.
+- Prepare infrastructure for GCP Cloud Run and implement API rate limits.
 
 ## Active Tasks
-- [ ] Design analytics database schemas (scores, reflections).
-- [ ] Build calculation cron jobs for execution metrics.
-- [ ] Create Analytics Dashboard UI.
+- [ ] Migrate database configs to support managed Cloud SQL.
+- [ ] Implement Redis-based API rate limiting in FastAPI.
+- [ ] Finalize Dockerfile multi-stage builds.
 
 ## Current Blockers
 - None.
 
 ## Next Steps
-- Determine calculation algorithms for execution quality scores.
+- Verify production deployment variables.

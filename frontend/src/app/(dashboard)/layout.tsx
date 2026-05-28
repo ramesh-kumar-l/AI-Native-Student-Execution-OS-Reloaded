@@ -1,7 +1,7 @@
 import { auth, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { Brain, LayoutDashboard, Calendar, Library, Sparkles, Settings, LogOut, User, Target } from "lucide-react";
+import { Brain, LayoutDashboard, Calendar, Library, Sparkles, Settings, LogOut, User, Target, LineChart } from "lucide-react";
 
 export default async function DashboardLayout({
   children,
@@ -25,6 +25,7 @@ export default async function DashboardLayout({
     { name: "Knowledge", href: "/dashboard/knowledge", icon: Library, badge: "RAG" },
     { name: "Agents", href: "/dashboard/agents", icon: Sparkles, badge: "AI" },
     { name: "Career", href: "/dashboard/career", icon: Target, badge: "AI" },
+    { name: "Analytics", href: "/dashboard/analytics", icon: LineChart },
     { name: "Profile", href: "/dashboard/profile", icon: User },
     { name: "Goals", href: "/dashboard/goals", icon: Sparkles },
     { name: "Calendar", href: "/dashboard/calendar", icon: Calendar },
