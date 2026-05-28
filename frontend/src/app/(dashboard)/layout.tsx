@@ -21,6 +21,7 @@ export default async function DashboardLayout({
 
   const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Planning", href: "/dashboard/planning", icon: Calendar, badge: "AI" },
     { name: "Profile", href: "/dashboard/profile", icon: User },
     { name: "Goals", href: "/dashboard/goals", icon: Sparkles },
     { name: "Calendar", href: "/dashboard/calendar", icon: Calendar },

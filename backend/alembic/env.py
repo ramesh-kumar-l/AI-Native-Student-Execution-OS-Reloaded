@@ -19,6 +19,9 @@ from app.models.user import User, VerificationToken, RefreshToken
 from app.models.student_profile import StudentProfile
 from app.models.goal import Goal, Milestone
 from app.models.calendar import CalendarSource, CalendarEvent
+from app.models.task import Task
+from app.models.study_block import StudyBlock
+from app.models.recommendation import Recommendation
 from app.core.config import get_settings
 
 target_metadata = Base.metadata

@@ -12,6 +12,9 @@ from app.api.v1.auth import router as auth_router
 from app.api.v1.profiles import router as profiles_router
 from app.api.v1.goals import router as goals_router
 from app.api.v1.calendar import router as calendar_router
+from app.api.v1.tasks import router as tasks_router
+from app.api.v1.planning import router as planning_router
+from app.api.v1.recommendations import router as recommendations_router
 
 settings = get_settings()
 logger = structlog.get_logger()
@@ -50,3 +53,6 @@ app.include_router(auth_router, prefix="/api/v1")
 app.include_router(profiles_router, prefix="/api/v1")
 app.include_router(goals_router, prefix="/api/v1")
 app.include_router(calendar_router, prefix="/api/v1")
+app.include_router(tasks_router, prefix="/api/v1")
+app.include_router(planning_router, prefix="/api/v1")
+app.include_router(recommendations_router, prefix="/api/v1")
