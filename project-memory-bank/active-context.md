@@ -1,17 +1,16 @@
 # Active Context
 
 ## Current Objectives
-- Complete **Phase 4 — Knowledge Compression Engine**.
-- Setup Vector Database (ChromaDB/Pinecone).
-- Implement document parsing and RAG pipeline.
+- Complete **Phase 5 — Execution Agents**.
+- Introduce autonomous background personas (Planner, Revision, Accountability, Focus).
 
 ## Active Tasks
-- [ ] Initialize Vector DB connection.
-- [ ] Build document upload routers.
-- [ ] Implement text chunking and flashcard generation.
+- [ ] Set up Agent orchestrator architecture.
+- [ ] Connect agents to Phase 3 & Phase 4 data contexts.
+- [ ] Build Agent interaction UI panel.
 
 ## Current Blockers
 - None.
 
 ## Next Steps
-- Implement PDF ingestion logic.
+- Define Agent personality configurations.

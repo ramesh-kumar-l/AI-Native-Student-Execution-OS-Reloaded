@@ -9,14 +9,16 @@
 - **CI/CD Configuration**: GitHub actions testing suite hookup.
 - **Student Context Engine (Phase 2)**: DB models, API Routers for Profiles, Goals, Calendar sources, and frontend UI dashboards.
 - **AI Planning Engine (Phase 3)**: Gemini API integration, dynamic StudyBlock generation, Task prioritization, Fatigue balancing, and Recommendation models.
+- **Knowledge Compression Engine (Phase 4)**: ChromaDB vector store integration, PyPDF parsing, Document/Flashcard schema, and Gemini-powered RAG/summarization pipeline.
 
 ## In-Progress Systems
-- Transitioning to Phase 4: Knowledge Compression Engine.
+- Transitioning to Phase 5: Execution Agents.
 
-## Pending Systems (Phase 4)
-- **Document Ingestion**: PDF, TXT parsing.
-- **Flashcard Generator**: LLM generation from uploaded notes.
-- **Vector Database**: RAG semantic search setup.
+## Pending Systems (Phase 5)
+- **Planner Agent**: Automates scheduling dynamically.
+- **Revision Agent**: Manages spaced repetition.
+- **Accountability Agent**: Tracks nudges and streaks.
+- **Focus Agent**: Deep work integrations.
 
 ## Deployment State
 - Local-only execution via Docker Compose (to be implemented).
